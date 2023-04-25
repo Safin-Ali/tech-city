@@ -1,0 +1,9 @@
+.hero-section{
+    @apply flex items-center min-h-screen px-[5%] bg-[url(https://i.ibb.co/g7zTzvH/blank-blue-halftone-background-low-opacity.png)] bg-no-repeat bg-cover
+}
+
+.slide-3d-cube{
+    transform: rotateZ(120deg);
+    box-shadow: 0px 0px 30px -5px hsla(218, 100%, 62%, 0.541);
+    @apply w-[55%] rounded-md mx-auto overflow-hidden
+}

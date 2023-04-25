@@ -1,0 +1,19 @@
+.navbar-items-container{
+    @apply shadow-md shadow-blue-800/20 md:shadow-none bg-transparent md:flex w-full flex-col md:flex-row backdrop-blur-sm flex-full-center md:gap-3 capitalize
+}
+
+.res-nav{
+    @apply scale-y-0 md:scale-100 transition-transform duration-[400] w-full absolute md:static inset-0 right-10 top-[70px]
+}
+.navbar-link{
+    @apply text-blue-900 font-semibold p-2 rounded-md hover:text-white hover:bg-blue-800 duration-150 transition-all hover:md:shadow-[0px_2px_12px_hsla(218,100%,62%,0.7)]
+}
+.nav-expand{
+    @apply scale-y-100 origin-top
+}
+.navbar-items{
+    @apply text-center py-2 last:pb-2.5 first:pt-3 last:border-0 md:p-0 md:first:p-0 md:last:p-0 border-b-2 w-full md:border-0
+}
+.navbar-blur{
+    @apply h-full inset-0 absolute backdrop-blur-sm z-[2] w-full py-[2%] gap-3 lg:py-[1%] shadow
+}
