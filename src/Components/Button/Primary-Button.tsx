@@ -10,7 +10,7 @@ function PrimaryButton({ children, middle, padding, onClick, rounded }: Props) {
 
   return (
     <div onClick={ onClick }>
-      <button className={ `text-white ${rounded} ${middle && 'center'} bg-blue-900 ${padding} font-DMsans` }>{ children }</button>
+      <button className={ `text-white-50 ${rounded} ${middle && 'center'} bg-blue-900 ${padding} font-DMsans` }>{ children }</button>
     </div>
   );
 };

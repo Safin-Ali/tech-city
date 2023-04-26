@@ -2,19 +2,20 @@
 @tailwind components;
 @tailwind utilities;
 
-@layer utilities {
-    .flex-full-center {
-        @apply flex justify-center items-center
-    }
-}
-
 @layer components {
     body{
-        @apply text-gray-900 relative
+        @apply text-gray-900 relative bg-white-300
     }
     .flex-v-center {
         @apply flex items-center
     }
+    .flex-full-center {
+        @apply flex justify-center items-center
+    }
+    .section-header{
+        @apply text-3xl font-bold text-center text-blue-800;
+    }
     @import url('../Pages/Home/Shared/style/shared-section.css');
     @import url('../Components/App-Bar/navbar.css');
+    @import url('../Components/Card/card-style.css');
 }

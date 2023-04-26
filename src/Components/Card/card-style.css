@@ -1,0 +1,3 @@
+.services-card {
+    @apply shadow-default shadow-gray-900/40 transition-all bg-white-100 duration-300 rounded-lg p-[3%];
+}

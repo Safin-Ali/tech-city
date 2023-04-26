@@ -1,12 +1,15 @@
 import React, { createContext } from 'react';
 import { ProductCategoryType, useProductCategoryQuery } from '../Redux/end-point/prod-category';
 import { BannerImgDataType, useProductBannerImgsQuery } from '../Redux/end-point/products-slide-icon';
+import { ServicesInfoType, useServiceInfoDataQuery } from '../Redux/end-point/services-info';
 
 interface ExtraDataType {
   bannerSlide?: BannerImgDataType | undefined,
   bannerSlideLoading?: boolean,
   productsCategory?: ProductCategoryType[] | undefined,
-  productsCategoryLoading?: boolean
+  productsCategoryLoading?: boolean,
+  servicesInfo?: ServicesInfoType[] | undefined,
+  servicesInfoLoading?: boolean
 };
 
 export const ExtraDataContext = createContext<ExtraDataType>({});
@@ -21,11 +24,15 @@ function ExtraData({ children }: Props) {
 
   const { data: bannerSlide, isLoading: bannerSlideLoading = false } = useProductBannerImgsQuery();
 
+  const { data: servicesInfo, isLoading: servicesInfoLoading} = useServiceInfoDataQuery();
+
   const value: ExtraDataType = {
     bannerSlide,
     bannerSlideLoading,
     productsCategory,
-    productsCategoryLoading
+    productsCategoryLoading,
+    servicesInfo,
+    servicesInfoLoading
   };
 
   return (
