@@ -3,6 +3,8 @@ import HeroSection from './Shared/Hero-Section';
 import Navbar from '../../Components/App-Bar/Navbar';
 import PrimaryButton from '../../Components/Button/Primary-Button';
 import ServiceSection from './Shared/Service-Section';
+import CategorySection from './Shared/Category-Section';
+import Footer from './Shared/Footer';
 
 function Home() {
 
@@ -13,6 +15,8 @@ function Home() {
         <main>
           <HeroSection />
           <ServiceSection/>
+          <CategorySection/>
+          <Footer/>
         </main>
     </>
   );

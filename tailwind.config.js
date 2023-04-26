@@ -19,6 +19,7 @@ module.exports = {
           '100': '#FBFCFF',
           '200': '#ecedf1',
           '300': '#FDFEFF',
+          '400': '#F1F2F7',
         },
       },
       boxShadow:{

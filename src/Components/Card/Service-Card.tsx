@@ -9,7 +9,7 @@ type Props = {
 function ServiceCard({ servName, servImg, servDesc }:Props) {
 
     return (
-        <div className={`services-card`}>
+        <div className={`services-card duration-300 hover:scale-[1.02]`}>
             {/* Service Icon */}
             <div className={`p-2 rounded-md bg-gray-200`}>
                 <div className={`w-[70%] mx-auto`}>

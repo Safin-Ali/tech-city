@@ -7,12 +7,12 @@ function Navbar() {
     const [navExpand,setNavExpand] = useState<boolean>(false);
     return (
         <header className={ `px-[5%] sticky top-0 z-[100] shadow w-full` }>
-            <nav className={ `h-[70px] flex-v-center justify-between` }>
+            <nav className={ `h-[70px] flex-v-center gap-5 justify-between` }>
 
                 {/* brand text */ }
                 <div className={ `flex-full-center gap-3` }>
                     <div>
-                        <Link className={ `font-mincho whitespace-nowrap text-3xl font-bold` } to={ `/` }><span>Tech</span> <span className={ `text-blue-900` }>City</span></Link>
+                        <Link className={ `font-mincho whitespace-nowrap text-lg md:text-3xl font-bold` } to={ `/` }><span>Tech</span> <span className={ `text-blue-900` }>City</span></Link>
                     </div>
 
                     <div>
