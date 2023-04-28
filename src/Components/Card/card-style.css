@@ -1,3 +1,25 @@
 .services-card {
     @apply shadow-default shadow-gray-900/40 transition-all bg-white-100 duration-300 rounded-lg p-[3%];
 }
+
+.product-card {
+    box-shadow: 0px 0px 10px 0px hsla(211, 80%, 88%, 0.7);
+    @apply cursor-auto duration-300 h-fit border rounded-xl;
+}
+
+.product-card-thumb img {
+    filter: drop-shadow(0px 0px 5px hsl(0, 10%, 50%));
+}
+
+.product-card-thumb {
+    box-shadow: 0px 0px 40px 5px #EFF0F0;
+    @apply m-2 bg-transparent rounded-md border;
+}
+
+.product-card-highlight {
+    @apply px-3 text-sm rounded-full py-1 font-medium
+}
+
+.product-card-content {
+    @apply bg-transparent rounded-b-xl py-2 mx-4
+}

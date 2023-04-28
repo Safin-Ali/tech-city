@@ -3,10 +3,10 @@ import SearchBar from './Search-Bar';
 import { FaBars } from 'react-icons/fa';
 import { useState } from 'react';
 
-function Navbar() {
+function Navbar({bgColor}:{bgColor?:string}) {
     const [navExpand,setNavExpand] = useState<boolean>(false);
     return (
-        <header className={ `px-[5%] sticky top-0 z-[100] shadow w-full` }>
+        <header className={ `px-[5%] ${bgColor && bgColor} sticky top-0 z-[100] shadow w-full` }>
             <nav className={ `h-[70px] flex-v-center gap-5 justify-between` }>
 
                 {/* brand text */ }

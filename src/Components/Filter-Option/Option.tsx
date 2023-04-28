@@ -54,13 +54,15 @@ function Option({ children,
                 <div>
                     { !currentText ? children : currentText }
                 </div>
-                <div className={ `pointer-events-none mt-0.5` }>
-                    <AiFillCaretDown />
-                </div>
+                {
+                    !singleOption && <div className={ `pointer-events-none mt-0.5` }>
+                        <AiFillCaretDown />
+                    </div>
+                }
             </div>
 
             {
-                !singleOption && (<div className={ `option-list-template ${active ? 'block' : 'hidden'}` }>
+                !singleOption && (<div className={ `option-list-template ${active ? 'option-list-template-active' : ''}` }>
                     <ul>
                         {
                             optionList?.map((option, idx) => <li key={ idx } data-value={ option.value } onClick={ callBackFunc } className={ `option-items` }>{ option.label }</li>)

@@ -1,0 +1,3 @@
+.product-card-discount-badge{
+    @apply absolute text-white-50 p-2 top-1/2 bg-cover left-1/2 transform -translate-x-1/2 -translate-y-1/2;
+  }

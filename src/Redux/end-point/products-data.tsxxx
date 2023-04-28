@@ -1,7 +1,0 @@
-// import techCityAPI from "../api/tech-city-api";
-
-// const productsDataAPI = techCityAPI.injectEndpoints({
-//     endpoints: builder => {
-//         productsData: builder.query<>
-//     }
-// })

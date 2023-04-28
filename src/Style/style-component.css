@@ -3,30 +3,69 @@
 @tailwind utilities;
 
 @layer components {
-    body{
+    body {
         @apply text-gray-900 relative bg-white-300
     }
+
     .flex-v-center {
         @apply flex items-center
     }
+
     .flex-full-center {
         @apply flex justify-center items-center
     }
-    .section-header{
+
+    .section-header {
         @apply text-3xl font-bold text-center text-blue-800;
     }
+
+    .skeleton-tone {
+        @apply animate-pulse bg-gray-200;
+    }
+
     @import url('../Pages/Home/Shared/style/shared-section.css');
     @import url('../Components/App-Bar/navbar.css');
     @import url('../Components/Card/card-style.css');
     @import url('../Layouts/Products-List-style.css');
     @import url('../Components/Filter-Option/filter-option.css');
+    @import url('../Components/Badge/badge-style.css');
 }
 
 @layer utilities {
     .hide-scrollbar::-webkit-scrollbar {
-      display: none;
+        display: none;
     }
+
     .show-scrollbar::-webkit-scrollbar {
-      display: block;
+        display: block;
     }
-  }
+}
+
+/* Set the width and height of the scrollbar */
+::-webkit-scrollbar {
+    width: 9px;
+    height: auto;
+}
+
+/* Set the style of the scrollbar track */
+::-webkit-scrollbar-track {
+    @apply bg-[#DEE2E6];
+}
+
+/* Set the style of the scrollbar thumb */
+::-webkit-scrollbar-thumb {
+    @apply bg-blue-800;
+    border-radius: 3px;
+}
+
+/* responsive */
+
+@media only screen and (max-width: 767px) {
+
+    /* Set the width and height of the scrollbar */
+    ::-webkit-scrollbar {
+        width: 5px;
+        height: 4px;
+
+    }
+}

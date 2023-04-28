@@ -1,7 +1,21 @@
 .left-side-bar{
-    @apply fixed border-r-2 min-h-screen w-[20%] md:block hidden
+    @apply fixed border-r-2 inset-0 pt-[70px] overflow-y-scroll min-h-screen h-full w-[20%] md:block hidden
 }
 
 .filter-nav{
-    @apply bg-white-50 w-full px-[5%] flex gap-5 py-3 shadow-[0px_2px_20px_hsla(211,80%,88%,0.7)]
+    @apply bg-white-50 w-full overflow-x-auto sticky inset-0 z-[6] px-[5%] flex gap-5 py-3 shadow-[0px_2px_20px_hsla(211,80%,88%,0.7)]
+}
+
+.product-list-container{
+    @apply grid items-center grid-cols-1 cursor-n-resize sm:grid-cols-2 lg:grid-cols-3 gap-5 hide-scrollbar p-[5%]
+}
+
+.side-nav-link {
+    transition:background-color 0.2s ease-in;
+    @apply bg-white-50 border shadow hover:bg-blue-800 hover:text-white-50 cursor-pointer my-4 font-semibold mx-2 p-2 rounded-md;
+}
+
+.side-nav-link-active {
+    transition:background-color 0.2s ease-in;
+    @apply bg-blue-800 text-white-50 border-none shadow-[0px_3px_12px_hsla(218,100%,62%,0.9)];
 }
