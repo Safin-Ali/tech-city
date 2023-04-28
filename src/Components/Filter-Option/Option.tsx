@@ -1,18 +1,19 @@
 import { AiFillCaretDown } from 'react-icons/ai';
+import { GiCheckMark } from 'react-icons/gi';
 import React, { useEffect, useRef, useState } from 'react';
 
 type callBackFuncType = React.MouseEvent<HTMLLIElement>
 
 interface Props {
     children: string,
-    callBackFunc?: (e: callBackFuncType | boolean) => void,
-    currentText?: string | null,
+    callBackFunc?: (type: string, e: callBackFuncType | boolean) => void,
+    activeValue?: string | null,
     optionList: { label: string, value: string | number }[] | undefined,
     singleOption?: boolean
 }
 function Option({ children,
     callBackFunc = () => { },
-    currentText,
+    activeValue,
     singleOption = false,
     optionList
 }: Props) {
@@ -44,15 +45,15 @@ function Option({ children,
             <div ref={ targetRef } onClick={ () => {
                 if (singleOption) {
                     setActive(!active)
-                    callBackFunc(!active)
+                    callBackFunc(children.toLocaleLowerCase(), !active)
                 } else {
                     setActive(!active)
                 }
             } }
-                className={ `select-option ${!singleOption ? currentText ? 'select-option-active' : '' : active ? 'select-option-active' : ''}` }
+                className={ `select-option ${!singleOption ? activeValue ? 'select-option-active' : '' : active ? 'select-option-active' : ''}` }
             >
-                <div>
-                    { !currentText ? children : currentText }
+                <div className={`ml-1.5`}>
+                    { !activeValue ? children : activeValue }
                 </div>
                 {
                     !singleOption && <div className={ `pointer-events-none mt-0.5` }>
@@ -65,7 +66,14 @@ function Option({ children,
                 !singleOption && (<div className={ `option-list-template ${active ? 'option-list-template-active' : ''}` }>
                     <ul>
                         {
-                            optionList?.map((option, idx) => <li key={ idx } data-value={ option.value } onClick={ callBackFunc } className={ `option-items` }>{ option.label }</li>)
+                            optionList?.map((option, idx) => <li
+                                key={ idx }
+                                data-value={ option.value }
+                                onClick={ (event) => callBackFunc(children.toLocaleLowerCase(),event) }
+                                className={ `option-items ${option.value === activeValue && 'option-items-active'}` }>
+                                { option.label }
+                                <span className={`option-items-checkmark ${ activeValue === option.value ? 'block' : 'hidden'}`}><GiCheckMark className={`text-blue-900`}></GiCheckMark></span>
+                            </li>)
                         }
                     </ul>
                 </div>)

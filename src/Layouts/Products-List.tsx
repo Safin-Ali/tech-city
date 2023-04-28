@@ -7,6 +7,7 @@ import LeftSide from "./Left-Side-Bar";
 import { useProductsDataQuery } from "../Redux/end-point/products-data";
 import ProductCardSkeleton from "../Components/Card/ProductCardSkeleton";
 import ProductCard from "../Components/Card/ProductCard";
+import useFilterOptions from "../Services/Utils/filter-options";
 
 type handleOptionFuncType = React.MouseEvent<HTMLLIElement> | boolean
 
@@ -14,15 +15,24 @@ function ProductsList() {
 
     const { filterOption } = useContext(ExtraDataContext);
 
-    const handleOption = (e: handleOptionFuncType): void => {
+    const {activity,brand,device,discount,handleFilterValue} = useFilterOptions();
+
+    const handleOption = (type:string, e: handleOptionFuncType, ): void => {
         if (typeof e !== 'boolean') {
             const li = e.target as HTMLLIElement;
-            const value = li.getAttribute('data-value');
-            console.log(value);
+            const value = li.getAttribute('data-value') || '';
+            console.log(type);
+
+            handleFilterValue(type,value)
+
         } else {
-            console.log(e);
+            console.log(type,e);
+            handleFilterValue(type,e)
         }
     };
+
+    console.log(activity,brand,device,discount,'render');
+
 
     const { data: prodData, isLoading: prodDataLoading } = useProductsDataQuery();
 
@@ -41,9 +51,9 @@ function ProductsList() {
 
                     {/* filter bar */ }
                     <div className={ `filter-nav` }>
-                        <Option optionList={ filterOption?.activity } callBackFunc={ handleOption } children={ `Activity` } />
+                        <Option optionList={ filterOption?.activity } activeValue={activity} callBackFunc={ handleOption } children={ `Activity` } />
 
-                        <Option optionList={ filterOption?.device } callBackFunc={ handleOption } children={ `Device` } />
+                        <Option optionList={ filterOption?.device } activeValue={device} callBackFunc={ handleOption } children={ `Device` } />
 
                         <Option optionList={ filterOption?.device } callBackFunc={ handleOption } singleOption={ true } children={ `Discount` } />
                     </div>
@@ -53,7 +63,7 @@ function ProductsList() {
                         {
                             prodDataLoading
                                 ?
-                                [...Array(3).keys()].map(skl => <ProductCardSkeleton />)
+                                [...Array(3).keys()].map(idx => <ProductCardSkeleton key={idx}/>)
                                 :
                                 prodData?.products.length
                                     ?

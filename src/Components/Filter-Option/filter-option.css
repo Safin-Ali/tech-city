@@ -6,7 +6,7 @@
 }
 
 .option-list-template{
-    @apply bg-white-50 z-[5] capitalize w-full rounded-t-3xl md:w-auto fixed bottom-0 left-1/2 transform -translate-x-1/2 pointer-events-none opacity-0 transition-all invisible duration-300 md:-translate-x-0 md:absolute md:top-12 shadow-[0px_-5px_20px_#00000050] md:rounded-md min-w-[15rem] md:shadow md:bottom-auto text-center md:left-auto;
+    @apply bg-white-50 z-[5] capitalize w-full rounded-t-3xl md:w-auto fixed bottom-0 left-1/2 transform -translate-x-1/2 pointer-events-none opacity-0 transition-all invisible duration-300 md:-translate-x-0 md:top-[130px] shadow-[0px_-5px_20px_#00000050] md:rounded-md min-w-[15rem] md:shadow md:bottom-auto text-center md:left-auto;
 }
 
 .option-list-template-active{
@@ -14,8 +14,11 @@
 }
 
 .option-items{
-    @apply border-b py-2 border-[#c8e0f9] last:border-0 cursor-pointer last:hover:rounded-b-md hover:first:rounded-t-md hover:bg-[#DBEAFE] hover:text-blue-900
+    @apply border-b relative py-2 border-[#c8e0f9] last:border-0 cursor-pointer last:hover:rounded-b-md hover:first:rounded-t-md hover:bg-[#DBEAFE] hover:text-blue-900
 }
 .option-items-active{
     @apply bg-[#DBEAFE] hover:text-blue-900 border-[hsl(211,100%,66%)]
+}
+.option-items-checkmark{
+    @apply absolute right-[10%] top-1/2 transform -translate-y-1/2
 }

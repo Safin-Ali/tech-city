@@ -11,7 +11,7 @@ function LeftSide({brands}:Props) {
 
     const handleNavigate = (brand:string , device: string):void => {
         navigate(`/products/${brand}/${device}`)
-    }
+    };
 
     return (
         <>
@@ -27,7 +27,7 @@ function LeftSide({brands}:Props) {
                     :
                     brands.length
                     ?
-                    brands.map(brand => <li className={`side-nav-link`}>{brand.brandName}</li>)
+                    brands.map(brand => <li key={brand._id} className={`side-nav-link`}>{brand.brandName}</li>)
                     : <div>Empty</div>
                 }
             </ul>
