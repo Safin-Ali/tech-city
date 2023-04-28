@@ -2,6 +2,7 @@ import React, { createContext } from 'react';
 import { ProductCategoryType, useProductCategoryQuery } from '../Redux/end-point/prod-category';
 import { BannerImgDataType, useProductBannerImgsQuery } from '../Redux/end-point/products-slide-icon';
 import { ServicesInfoType, useServiceInfoDataQuery } from '../Redux/end-point/services-info';
+import { useFilterOptionQuery } from '../Redux/end-point/filter-options';
 
 interface ExtraDataType {
   bannerSlide?: BannerImgDataType | undefined,
@@ -10,6 +11,7 @@ interface ExtraDataType {
   productsCategoryLoading?: boolean,
   servicesInfo?: ServicesInfoType[] | undefined,
   servicesInfoLoading?: boolean
+  filterOption?: any | undefined
 };
 
 export const ExtraDataContext = createContext<ExtraDataType>({});
@@ -26,13 +28,16 @@ function ExtraData({ children }: Props) {
 
   const { data: servicesInfo, isLoading: servicesInfoLoading} = useServiceInfoDataQuery();
 
+  const {data:filterOption,} = useFilterOptionQuery();
+
   const value: ExtraDataType = {
     bannerSlide,
     bannerSlideLoading,
     productsCategory,
     productsCategoryLoading,
     servicesInfo,
-    servicesInfoLoading
+    servicesInfoLoading,
+    filterOption
   };
 
   return (

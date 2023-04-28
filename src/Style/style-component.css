@@ -18,4 +18,15 @@
     @import url('../Pages/Home/Shared/style/shared-section.css');
     @import url('../Components/App-Bar/navbar.css');
     @import url('../Components/Card/card-style.css');
+    @import url('../Layouts/Products-List-style.css');
+    @import url('../Components/Filter-Option/filter-option.css');
 }
+
+@layer utilities {
+    .hide-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .show-scrollbar::-webkit-scrollbar {
+      display: block;
+    }
+  }

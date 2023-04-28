@@ -1,0 +1,17 @@
+.select-option{
+    @apply w-fit capitalize py-1 px-3 font-medium font-DMsans cursor-pointer text-white-50 text-inherit border border-blue-800 rounded-lg duration-150 flex-full-center gap-1 hover:bg-blue-800 hover:rounded-3xl hover:shadow-[0px_3px_12px_hsla(218,100%,62%,0.9)] hover:text-white-50
+}
+.select-option-active{
+    @apply bg-blue-800 rounded-3xl shadow-[0px_3px_12px_hsla(218,100%,62%,0.9)] text-white-50
+}
+
+.option-list-template{
+    @apply bg-white-50 capitalize w-full rounded-t-3xl md:w-auto fixed bottom-0 left-1/2 transform -translate-x-1/2 md:-translate-x-0 md:absolute md:top-12 shadow-[0px_-5px_20px_#00000050] md:rounded-md min-w-[15rem] md:shadow md:bottom-auto text-center md:left-auto;
+}
+
+.option-items{
+    @apply border-b py-2 border-[#c8e0f9] last:border-0 cursor-pointer hover:bg-[#DBEAFE] hover:text-blue-900
+}
+.option-items-active{
+    @apply bg-[#DBEAFE] hover:text-blue-900 border-[hsl(211,100%,66%)]
+}

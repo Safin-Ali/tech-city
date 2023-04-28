@@ -27,7 +27,7 @@ function CategoryCard({ category, icon, description }: Props) {
             <div className={ `px-3` }>
                 <h4 className={ `text-xl font-bold font-baloo2 my-1 text-center text-blue-800` }>{ category }</h4>
                 <p>
-                    <AutoType textArr={ [description] } typeSpeed={ 0.03 } onceType={ true } className={ `font-semibold font-baloo2 text-zinc-500` } />
+                    <AutoType textArr={ [description] } typeSpeed={ 0.03 } onceType={ true } className={ `font-semibold font-baloo2 text-gray-900` } />
                 </p>
             </div>
         </div>

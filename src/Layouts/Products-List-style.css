@@ -1,0 +1,7 @@
+.left-side-bar{
+    @apply fixed border-r-2 min-h-screen w-[20%] md:block hidden
+}
+
+.filter-nav{
+    @apply bg-white-50 w-full px-[5%] flex gap-5 py-3 shadow-[0px_2px_20px_hsla(211,80%,88%,0.7)]
+}

@@ -2,31 +2,37 @@ import { useContext } from "react";
 import { ExtraDataContext } from "../../../Context/Extra-Data";
 import CategoryCard from "../../../Components/Card/Category-Card";
 import SectionHeader from "../../../Components/Utilities/Section-Header";
+import ServiceCardSkeleton from "../../../Components/Card/ServiceCardSkeleton";
 
 function CategorySection() {
 
     const { productsCategory, productsCategoryLoading } = useContext(ExtraDataContext);
-
-    if (productsCategoryLoading) return <div>Loading</div>
-
     return (
         <>
             <section className={ `category-section` }>
 
-                <SectionHeader>Choose Device</SectionHeader>
+                <div className={`relative z-[3]`}>
+                    <SectionHeader>Choose Device</SectionHeader>
 
-                <div className={`service-section-box`}>
-                    {
-                        productsCategory?.length ?
-                            productsCategory?.map(category => <CategoryCard
-                                key={ category._id }
-                                category={ category.category }
-                                description={ category.description }
-                                icon={ category.icon }
-                            />)
+                    <div className={ `service-section-box` }>
+                        {
 
-                            : <div>not found</div>
-                    }
+                            productsCategoryLoading
+                                ?
+                                [...Array(4).keys()].map(i => <ServiceCardSkeleton key={ i } />)
+                                :
+                                productsCategory?.length
+                                    ?
+                                    productsCategory?.map(category => <CategoryCard
+                                        key={ category._id }
+                                        category={ category.category }
+                                        description={ category.description }
+                                        icon={ category.icon }
+                                    />)
+
+                                    : <div>not found</div>
+                        }
+                    </div>
                 </div>
 
                 <div className={ `circle-blob left-[-100px] bottom-[-100px]` }>
