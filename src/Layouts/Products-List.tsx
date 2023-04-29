@@ -7,15 +7,21 @@ import LeftSide from "./Left-Side-Bar";
 import { useProductsDataQuery } from "../Redux/end-point/products-data";
 import ProductCardSkeleton from "../Components/Card/ProductCardSkeleton";
 import ProductCard from "../Components/Card/ProductCard";
-import useFilterOptions from "../Services/Utils/filter-options";
+import useFilterOptions from "../Services/Utils/filter-options-controller";
+import {useState} from 'react';
+import EmptyData from "../Components/Error/EmptyData";
 
-type handleOptionFuncType = React.MouseEvent<HTMLLIElement> | boolean
+type handleOptionFuncType = React.MouseEvent<HTMLLIElement> | boolean;
 
 function ProductsList() {
 
     const { filterOption } = useContext(ExtraDataContext);
 
+    const [navValue,setNavVal] = useState<string | null>(null);
+
     const {activity,brand,device,discount,handleFilterValue} = useFilterOptions();
+
+    const handleNavSearchBar = (e:React.ChangeEvent<HTMLInputElement>):void => setNavVal(e.target.value as string);
 
     const handleOption = (type:string, e: handleOptionFuncType, ): void => {
         if (typeof e !== 'boolean') {
@@ -31,14 +37,17 @@ function ProductsList() {
         }
     };
 
-    console.log(activity,brand,device,discount,'render');
-
-
-    const { data: prodData, isLoading: prodDataLoading } = useProductsDataQuery();
+    const { data: prodData, isFetching: prodDataLoading } = useProductsDataQuery({
+        activity,
+        brand,
+        device,
+        discount,
+        search: navValue
+    });
 
     return (
         <main>
-            <Navbar bgColor={ `bg-white-300` } />
+            <Navbar handleSearchFeild={handleNavSearchBar}  bgColor={ `bg-white-300` } />
 
             <div className={ `flex overflow-hidden h-[calc(100vh-70px)]` }>
 
@@ -66,9 +75,10 @@ function ProductsList() {
                                 [...Array(3).keys()].map(idx => <ProductCardSkeleton key={idx}/>)
                                 :
                                 prodData?.products.length
-                                    ?
-                                    prodData.products.map(item => <ProductCard key={ item._id } data={ item } />)
-                                    : <div>Empty</div>
+                                ?
+                                prodData.products.map(item => <ProductCard key={ item._id } data={ item } />)
+                                :
+                                <div className={`col-span-1 md:col-span-3`}><EmptyData/></div>
                         }
                     </div>
                 </div>

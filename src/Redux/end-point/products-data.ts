@@ -1,3 +1,4 @@
+import { FilterOptionsShapeType } from "../../Services/Utils/filter-options-controller";
 import techCityAPI from "../api/tech-city-api";
 
 
@@ -36,10 +37,17 @@ type ProdDataReturnShape = {
     readonly relatedBrands: RelatedBrand[]
 }
 
+interface QueryType extends FilterOptionsShapeType {
+    search: string | null
+}
+
 const productsDataAPI = techCityAPI.injectEndpoints({
     endpoints: builder => ({
-        productsData: builder.query<ProdDataReturnShape, void>({
-            query: () => `/products?activity=all&discount=false&brand=all&device=mobile&search=null`
+        productsData: builder.query<ProdDataReturnShape, QueryType>({
+            query: (filter) => {
+                const {activity,brand,device,discount,search} = filter;
+                return `/products?activity=${activity}&discount=${discount}&brand=${brand}&device=${device}&search=${search}`
+            }
         })
     })
 });

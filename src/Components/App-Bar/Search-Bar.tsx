@@ -1,7 +1,10 @@
 import {BsSearch} from 'react-icons/bs';
-type Props = {}
 
-function SearchBar() {
+export type SearchBarPropsType = {
+    handleSearchFeild?: (e:React.ChangeEvent<HTMLInputElement>) => void
+}
+
+function SearchBar({handleSearchFeild}:SearchBarPropsType) {
 
     return (
         <div className={ `border rounded-md flex items-center` }>
@@ -12,7 +15,7 @@ function SearchBar() {
 
             {/* Search Feild */ }
             <div className={ `` }>
-                <input type="text" className={ `w-full p-1 outline-none bg-transparent pl-3` } />
+                <input onChange={handleSearchFeild} type="text" className={ `w-full p-1 outline-none bg-transparent pl-3` } />
             </div>
         </div>
     );

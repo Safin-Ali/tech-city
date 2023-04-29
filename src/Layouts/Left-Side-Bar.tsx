@@ -1,5 +1,6 @@
 import { useNavigate } from "react-router-dom";
 import { RelatedBrand } from "../Redux/end-point/products-data";
+import EmptyData from "../Components/Error/EmptyData";
 
 interface Props {
     brands: RelatedBrand[] | undefined
@@ -28,7 +29,7 @@ function LeftSide({brands}:Props) {
                     brands.length
                     ?
                     brands.map(brand => <li key={brand._id} className={`side-nav-link`}>{brand.brandName}</li>)
-                    : <div>Empty</div>
+                    : <EmptyData/>
                 }
             </ul>
         </>

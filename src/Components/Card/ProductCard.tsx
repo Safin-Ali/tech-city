@@ -5,6 +5,7 @@ import { useNavigate } from 'react-router-dom';
 import { ProdDataShape } from '../../Redux/end-point/products-data';
 import DiscountBadge from '../Badge/DiscountBadge';
 import PrimaryButton from '../Button/Primary-Button';
+import useCartController from '../../Services/Utils/cart-products-controller';
 // import { reactLocaleStorage } from '../../utils/products-cart';
 
 interface Props {
@@ -22,12 +23,11 @@ const ProductCard = ({ data }: Props) => {
     // // navigate product single page
     // const navigateProduct = (brand, device, id) => navigate(`/product/${brand}/${device}/${id}`, { state: data });
 
-    // // get react locale storage all component
-    // const {setCart,getCart,removeCart} = reactLocaleStorage();
+    // handle product cart
+    const { handleCart, status } = useCartController(_id);
 
-    // const getCartProduct = getCart();
+    console.log(status, handleCart);
 
-    // const validateCart = getCartProduct.includes(_id);
 
     return (
         <div className={ `product-card` }>
@@ -68,24 +68,29 @@ const ProductCard = ({ data }: Props) => {
                     <span className="text-3xl font-bold text-indigo-950">${ price.total }</span>
                     <div className={ `flex-v-center gap-x-2` }>
                         <div>
-                            <PrimaryButton padding={`px-3 py-1.5`}>
+                            <PrimaryButton padding={ `px-3 py-1.5` }>
                                 Buy Now
                             </PrimaryButton>
                         </div>
                         <div
-                            // onClick={()=>{
-                            //     !validateCart ? setCart(_id)
-                            //     : removeCart(_id)
-                            //     callback()
-                            // }}
+
+                            onClick={ () => {
+                                !status
+                                    ?
+                                    handleCart('add', _id)
+                                    :
+                                    handleCart('rmv', _id)
+                            } }
+
                             className={ `bg-gray-100 border py-1.5 px-3 rounded cursor-pointer` }>
 
-                            {/* {
-                                !validateCart
-                                    ? <BsBookmark className={ `text-xl` }></BsBookmark>
-                                    : <BsBookmarkCheckFill className={ `text-blue-300 text-xl` }></BsBookmarkCheckFill>
-                            } */}
-                            <BsBookmark className={ `text-xl` }></BsBookmark>
+                            {
+                                !status
+                                    ?
+                                    <BsBookmark className={ `text-xl` } />
+                                    :
+                                    <BsBookmarkCheckFill className={ `text-blue-800 text-xl` } />
+                            }
                         </div>
                     </div>
                 </div>

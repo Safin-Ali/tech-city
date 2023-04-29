@@ -1,8 +1,9 @@
 import parseStringify from "./parse-stringify";
 import parseRealType from "./parse-real-type";
 import {useState} from 'react';
+import useComponentRemount from "./component-remounter";
 
-interface FilterOptionsShapeType {
+export interface FilterOptionsShapeType {
     activity: string,
     brand: string,
     device: string,
@@ -14,21 +15,22 @@ type ReturnType = FilterOptionsShapeType & {handleFilterValue: (type:string,valu
 const useFilterOptions = ():ReturnType => {
     const storage = sessionStorage;
     const existOptions: string | null = storage.getItem('productsFilter');
+    const pathName = window.location.pathname;
     const initFilterValue:FilterOptionsShapeType = {
         activity: '',
-        brand: '',
-        device: '',
+        brand: pathName.split('/')[2],
+        device: pathName.split('/')[3],
         discount: false
     };
 
-    const [strgUpdate,setStrgUpdate] = useState<boolean>(false);
+    const remount = useComponentRemount();
 
     const handleFilterValue = (type:string,value:string | boolean):void => {
         if(existOptions){
             const optionVal = parseRealType<FilterOptionsShapeType>(existOptions);
             const modifiedObj = {...optionVal,[type]:value};
             storage.setItem(`productsFilter`,parseStringify(modifiedObj));
-            setStrgUpdate(!strgUpdate)
+            remount();
         }
     };
 
