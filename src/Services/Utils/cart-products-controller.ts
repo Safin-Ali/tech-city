@@ -1,4 +1,3 @@
-import useComponentRemount from "./component-remounter"
 import parseRealType from "./parse-real-type";
 import parseStringify from "./parse-stringify";
 
@@ -8,15 +7,12 @@ type ReturnType = {
 }
 
 const useCartController = (id: string): ReturnType => {
-    const remount = useComponentRemount();
     const storage = localStorage;
     const existCart: string | null = storage.getItem('cart-products');
-    const orgDataType: string[] | [] = existCart ? parseRealType(existCart!) : [];
+    const orgDataType: string[] = existCart ? parseRealType(existCart!) : [];
     const status: boolean = orgDataType?.includes(id) || false;
 
     const handleCart = (type: 'add' | 'rmv', payload: string) => {
-        console.log(type,payload);
-
         switch (type) {
             case 'add':
                 storage.setItem('cart-products', parseStringify([...orgDataType, payload]));
@@ -26,9 +22,8 @@ const useCartController = (id: string): ReturnType => {
                 storage.setItem('cart-products', parseStringify(rmvedArr));
                 break;
         }
+    };
 
-        remount();
-    }
     if (!existCart) {
         storage.setItem('cart-products', parseStringify([]));
     };

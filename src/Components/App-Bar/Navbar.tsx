@@ -48,7 +48,7 @@ function Navbar({ bgColor,handleSearchFeild }: PropsType) {
                             </li>
 
                             <li className={ `navbar-items` }>
-                                <Link className={ `navbar-link ${location.pathname.includes('cart') && 'navbar-link-active'}` } to={ `/products/cart` }>
+                                <Link className={ `navbar-link ${location.pathname.includes('cart') && 'navbar-link-active'}` } to={ `/cart` }>
                                     Cart
                                 </Link>
                             </li>

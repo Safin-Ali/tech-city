@@ -10,10 +10,11 @@ import newArr from '../../Services/Utils/create-new-arr';
 // import { reactLocaleStorage } from '../../utils/products-cart';
 
 interface Props {
-    data: ProdDataShape
+    data: ProdDataShape,
+    callBack?: () => void
 }
 
-const ProductCard = ({ data }: Props) => {
+const ProductCard = ({ data, callBack = () => {} }: Props) => {
 
     // destrucred product data
     const { _id, activity, brand, core, device, deviceImage, others, price } = data;
@@ -28,7 +29,7 @@ const ProductCard = ({ data }: Props) => {
     const { handleCart, status } = useCartController(_id);
 
     return (
-        <div className={ `product-card` }>
+        <div onClick={callBack} className={ `product-card` }>
 
             {/* Product thumb */ }
             <div className={ `relative` }>

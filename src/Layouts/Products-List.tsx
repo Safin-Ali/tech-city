@@ -12,6 +12,8 @@ import { useState } from 'react';
 import EmptyData from "../Components/Error/EmptyData";
 import newArr from "../Services/Utils/create-new-arr";
 import { useNavigate, useParams } from "react-router-dom";
+import { useEffect } from "react";
+import useComponentRemount from "../Services/Utils/component-remounter";
 
 type handleOptionFuncType = React.MouseEvent<HTMLLIElement> | boolean;
 
@@ -46,6 +48,8 @@ function ProductsList() {
         discount,
         search: navValue
     });
+
+    const remount = useComponentRemount();
 
     return (
         <main>
@@ -114,7 +118,7 @@ function ProductsList() {
                                 :
                                 prodData?.products.length
                                     ?
-                                    prodData.products.map(item => <ProductCard key={ item._id } data={ item } />)
+                                    prodData.products.map(item => <ProductCard callBack={()=>remount()} key={ item._id } data={ item } />)
                                     :
                                     <div className={ `col-span-1 md:col-span-3` }><EmptyData /></div>
                         }
