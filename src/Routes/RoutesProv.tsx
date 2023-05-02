@@ -5,7 +5,7 @@ function RoutesProv () {
     return (<BrowserRouter>
         <Routes>
             <Route path={`/`} element={<Home></Home>}/>
-            <Route path={`/products/all/:device`} element={<ProductsList/>}/>
+            <Route path={`/products/:brand/:device`} element={<ProductsList/>}/>
         </Routes>
     </BrowserRouter>
     )

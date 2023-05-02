@@ -6,6 +6,7 @@ import { ProdDataShape } from '../../Redux/end-point/products-data';
 import DiscountBadge from '../Badge/DiscountBadge';
 import PrimaryButton from '../Button/Primary-Button';
 import useCartController from '../../Services/Utils/cart-products-controller';
+import newArr from '../../Services/Utils/create-new-arr';
 // import { reactLocaleStorage } from '../../utils/products-cart';
 
 interface Props {
@@ -25,9 +26,6 @@ const ProductCard = ({ data }: Props) => {
 
     // handle product cart
     const { handleCart, status } = useCartController(_id);
-
-    console.log(status, handleCart);
-
 
     return (
         <div className={ `product-card` }>
@@ -50,7 +48,7 @@ const ProductCard = ({ data }: Props) => {
 
                 <div className={ `flex-v-center gap-x-1 mb-4` }>
                     <div className={ `flex-v-center` }>
-                        { [...Array(3).keys()].map(elm => <BsStarFill color={ '#FCC73B' } key={ elm } className={ `mx-0.5` }></BsStarFill>) }
+                        { newArr(3).map(elm => <BsStarFill color={ '#FCC73B' } key={ elm } className={ `mx-0.5` }></BsStarFill>) }
                     </div>
 
                     <span className={ `mt-1 font-semibold border px-2 text-sm bg-gray-100 rounded-md` }>4.4</span>

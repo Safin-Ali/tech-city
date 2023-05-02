@@ -3,6 +3,7 @@ import { ExtraDataContext } from "../../../Context/Extra-Data";
 import CategoryCard from "../../../Components/Card/Category-Card";
 import SectionHeader from "../../../Components/Utilities/Section-Header";
 import ServiceCardSkeleton from "../../../Components/Card/ServiceCardSkeleton";
+import newArr from "../../../Services/Utils/create-new-arr";
 
 function CategorySection() {
 
@@ -19,7 +20,7 @@ function CategorySection() {
 
                             productsCategoryLoading
                                 ?
-                                [...Array(4).keys()].map(i => <ServiceCardSkeleton key={ i } />)
+                                newArr(4).map(i => <ServiceCardSkeleton key={ i } />)
                                 :
                                 productsCategory?.length
                                     ?

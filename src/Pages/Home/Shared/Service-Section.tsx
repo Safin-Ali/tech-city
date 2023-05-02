@@ -3,6 +3,7 @@ import { ExtraDataContext } from '../../../Context/Extra-Data';
 import ServiceCard from '../../../Components/Card/Service-Card';
 import SectionHeader from '../../../Components/Utilities/Section-Header';
 import ServiceCardSkeleton from '../../../Components/Card/ServiceCardSkeleton';
+import newArr from '../../../Services/Utils/create-new-arr';
 
 function ServiceSection() {
 
@@ -17,7 +18,7 @@ function ServiceSection() {
                 {
 
                     servicesInfoLoading ?
-                        [...Array(4).keys()].map(i => <ServiceCardSkeleton key={ i } />)
+                        newArr(4).map(i => <ServiceCardSkeleton key={ i } />)
                         :
                         servicesInfo?.length
                             ?

@@ -11,7 +11,8 @@ interface ExtraDataType {
   productsCategoryLoading?: boolean,
   servicesInfo?: ServicesInfoType[] | undefined,
   servicesInfoLoading?: boolean
-  filterOption?: any | undefined
+  filterOptionData?: any | undefined
+  filterOptionDataLoading?: boolean
 };
 
 export const ExtraDataContext = createContext<ExtraDataType>({});
@@ -28,7 +29,7 @@ function ExtraData({ children }: Props) {
 
   const { data: servicesInfo, isLoading: servicesInfoLoading} = useServiceInfoDataQuery();
 
-  const {data:filterOption,} = useFilterOptionQuery();
+  const {data:filterOptionData,isLoading: filterOptionDataLoading} = useFilterOptionQuery();
 
   const value: ExtraDataType = {
     bannerSlide,
@@ -37,7 +38,8 @@ function ExtraData({ children }: Props) {
     productsCategoryLoading,
     servicesInfo,
     servicesInfoLoading,
-    filterOption
+    filterOptionData,
+    filterOptionDataLoading
   };
 
   return (

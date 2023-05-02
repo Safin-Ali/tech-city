@@ -1,5 +1,5 @@
 .select-option{
-    @apply w-fit capitalize py-1 px-3 font-medium font-DMsans cursor-pointer text-white-50 text-inherit border border-blue-800 rounded-lg duration-150 flex-full-center gap-1 hover:bg-blue-800 hover:rounded-3xl hover:text-white-50
+    @apply w-fit capitalize py-1 px-3 font-medium font-DMsans cursor-pointer text-white-50 text-inherit border min-w-[96px] whitespace-nowrap border-blue-800 rounded-lg duration-150 flex-full-center gap-1 hover:bg-blue-800 hover:rounded-3xl hover:text-white-50
 }
 .select-option-active{
     @apply bg-blue-800 rounded-3xl shadow-[0px_3px_12px_hsla(218,100%,62%,0.9)] text-white-50
@@ -14,10 +14,10 @@
 }
 
 .option-items{
-    @apply border-b relative py-2 border-[#c8e0f9] last:border-0 cursor-pointer last:hover:rounded-b-md hover:first:rounded-t-md hover:bg-[#DBEAFE] hover:text-blue-900
+    @apply border-b relative py-2 border-[#c8e0f9] last:border-0 cursor-pointer last:hover:rounded-b-md hover:first:rounded-t-md transition-all duration-300 ease-linear hover:bg-[#DBEAFE] hover:text-blue-900
 }
 .option-items-active{
-    @apply bg-[#DBEAFE] hover:text-blue-900 border-[hsl(211,100%,66%)]
+    @apply bg-[#DBEAFE] text-blue-900 border-blue-800
 }
 .option-items-checkmark{
     @apply absolute right-[10%] top-1/2 transform -translate-y-1/2
