@@ -1,0 +1,52 @@
+.loader {
+    width: 60%;
+    height: 10px;
+    border-radius: 2px;
+    background-color: rgba(0, 0, 0, 0.2);
+    position: absolute;
+}
+
+.loader::before {
+    content: "";
+    position: absolute;
+    background-color: #3D84FF;
+    width: 0%;
+    height: 100%;
+    border-radius: 2px;
+    animation: load 2.5s ease-in-out infinite;
+    box-shadow: #3D84FF 0px 2px 29px 0px;
+}
+
+.loader-base {
+    display: flex;
+    justify-content: center;
+    z-index: 15;
+}
+
+.center {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+}
+.bg-blur{
+    background-color: rgba(0, 0, 0, 0.80);
+    position: fixed;
+    width: 100%;
+    inset: 0;
+    height: 100%;
+}
+.bg-blur-hidden{
+    display: none;
+}
+
+@keyframes load {
+    50% {
+        width: 100%;
+    }
+
+    100% {
+        right: 0;
+        left: unset;
+    }
+}
