@@ -5,7 +5,7 @@ import ControllerButton from './ControllerButton';
 import useCenterMode from '../helpers/center-mode';
 import getCarouselStyle from '../helpers/get-carousel-mode-style';
 
-function Slider2D({
+function Slider({
     children = childrenValue,
     slideControler = slideControlerValue,
     colorC = colorCValue,
@@ -96,4 +96,4 @@ function Slider2D({
     );
 };
 
-export default Slider2D;
+export default Slider;

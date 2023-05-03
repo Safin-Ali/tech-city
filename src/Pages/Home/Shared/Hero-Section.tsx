@@ -2,7 +2,7 @@ import { useContext } from "react";
 import PrimaryButton from "../../../Components/Button/Primary-Button";
 import { ExtraDataContext, } from "../../../Context/Extra-Data";
 import CarouselWrapper from "../../../Library/easy-carousel-stack/CarouselWrapper";
-import Slider2D from "../../../Library/easy-carousel-stack/components/Slider2D";
+import Slider2D from "../../../Library/easy-carousel-stack/components/Slider";
 import ProductsSlider from "../../../Components/Slider/Products-Slider";
 import { useNavigate } from "react-router-dom";
 import AutoType from "../../../Library/auto-type/AutoType";
