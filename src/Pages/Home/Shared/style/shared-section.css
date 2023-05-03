@@ -1,5 +1,5 @@
 .hero-section {
-    @apply flex items-center min-h-screen px-[5%] bg-[url(https://i.ibb.co/g7zTzvH/blank-blue-halftone-background-low-opacity.png)] bg-no-repeat bg-cover
+    @apply flex flex-col md:flex-row items-center min-h-screen px-[5%] bg-[url(https://i.ibb.co/g7zTzvH/blank-blue-halftone-background-low-opacity.png)] bg-no-repeat bg-cover
 }
 
 .slide-3d-cube {

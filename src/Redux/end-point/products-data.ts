@@ -45,8 +45,8 @@ const productsDataAPI = techCityAPI.injectEndpoints({
     endpoints: builder => ({
         productsData: builder.query<ProdDataReturnShape, QueryType>({
             query: (filter) => {
-                const {activity,brand,device,discount,search} = filter;
-                return `/products?activity=${activity}&discount=${discount}&brand=${brand}&device=${device}&search=${search}`
+                const {activity,brands,device,discount,search} = filter;
+                return `/products?activity=${activity}&discount=${discount}&brand=${brands}&device=${device}&search=${search}`
             }
         })
     })

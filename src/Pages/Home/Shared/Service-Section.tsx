@@ -4,6 +4,7 @@ import ServiceCard from '../../../Components/Card/Service-Card';
 import SectionHeader from '../../../Components/Utilities/Section-Header';
 import ServiceCardSkeleton from '../../../Components/Card/ServiceCardSkeleton';
 import newArr from '../../../Services/Utils/create-new-arr';
+import EmptyData from '../../../Components/Error/EmptyData';
 
 function ServiceSection() {
 
@@ -29,7 +30,7 @@ function ServiceSection() {
                                 key={ service._id }
                             />)
 
-                            : <div>not found</div>
+                            : <div><EmptyData/></div>
                 }
             </div>
         </section>

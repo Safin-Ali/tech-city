@@ -1,18 +1,17 @@
 import { AiFillCaretDown } from 'react-icons/ai';
 import { GiCheckMark } from 'react-icons/gi';
 import React, { ReactNode, useEffect, useRef, useState } from 'react';
-import { Link, useNavigate } from 'react-router-dom';
 
-type callBackFuncType = React.MouseEvent<HTMLLIElement>
+type callBackFuncType = React.MouseEvent<HTMLLIElement>;
 
 interface Props {
     children: string,
     callBackFunc?: (type: string, e: callBackFuncType | boolean, nav?:boolean) => void,
-    activeValue?: string | null,
+    activeValue?: string | boolean | null,
     optionList: { label: string, value: string | number }[] | undefined,
     singleOption?: boolean,
     navigate?: boolean
-    navigatePath?: string
+    navigateFunc?: Function
 }
 function Option({ children,
     callBackFunc = () => { },
@@ -20,14 +19,12 @@ function Option({ children,
     singleOption = false,
     optionList,
     navigate = false,
-    navigatePath = ''
+    navigateFunc = () => {}
 }: Props) {
 
     const [active, setActive] = useState<boolean>(false);
 
     const targetRef = useRef<HTMLDivElement>(null);
-
-    const handleNavigate = useNavigate()
 
     useEffect(() => {
         if (!singleOption) {
@@ -64,7 +61,7 @@ function Option({ children,
                     setActive(!active)
                 }
             } }
-                className={ `select-option ${!singleOption ? activeValue ? checkCurrentOption() ? 'select-option-active' : '' : '' : active ? 'select-option-active' : ''}` }
+                className={ `select-option ${!singleOption ? activeValue ? checkCurrentOption() && 'select-option-active' : '' : active ? 'select-option-active' : ''}` }
             >
                 <div className={`ml-1.5`}>
                     { !activeValue ? children : setCurrentActive() }
@@ -85,7 +82,7 @@ function Option({ children,
                                 data-value={ option.value }
                                 onClick={ (event) => {
                                     callBackFunc(children.toLocaleLowerCase(),event);
-                                    if(navigate) handleNavigate(`${navigatePath}${option.value}`);
+                                    if(navigate) navigateFunc(option.value);
                                 }}
                                 className={ `option-items ${option.value === activeValue && 'option-items-active'}` }
                                 >

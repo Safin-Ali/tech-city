@@ -14,7 +14,7 @@
 }
 
 .option-items{
-    @apply border-b relative py-2 border-[#c8e0f9] last:border-0 cursor-pointer last:hover:rounded-b-md hover:first:rounded-t-md transition-all duration-300 ease-linear hover:bg-[#DBEAFE] hover:text-blue-900
+    @apply border-b relative py-2 border-[#c8e0f9] last:border-0 last:rounded-b-md first:rounded-t-md cursor-pointer last:hover:rounded-b-md hover:first:rounded-t-md transition-all duration-300 ease-linear hover:bg-[#DBEAFE] hover:text-blue-900
 }
 .option-items-active{
     @apply bg-[#DBEAFE] text-blue-900 border-blue-800

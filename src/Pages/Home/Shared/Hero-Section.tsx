@@ -18,7 +18,7 @@ function HeroSection() {
       <section className={ `hero-section` }>
 
         {/* text area */ }
-        <div className={ `basis-1/2` }>
+        <div className={ `basis-1/2 order-2 md:order-none` }>
           <h2 className={ `font-mincho text-3xl font-bold` }><span>Tech</span> <span className={ `text-blue-900` }>City</span></h2>
 
           <div>
@@ -27,11 +27,11 @@ function HeroSection() {
             </h5>
           </div>
 
-          <PrimaryButton onClick={ () => navigate('/all') } children={ 'See Products' } />
+          <PrimaryButton onClick={ () => navigate('/products/all/all') } children={ 'See Products' } />
         </div>
 
         {/* slide area */ }
-        <div className={ `basis-1/2` }>
+        <div className={ `basis-1/2 order-1 md:order-none` }>
           {
             !bannerSlideLoading && <CarouselWrapper>
               <Slider2D AIChange={true} changeSpeed={ 3 }>

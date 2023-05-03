@@ -12,7 +12,6 @@ import { useState } from 'react';
 import EmptyData from "../Components/Error/EmptyData";
 import newArr from "../Services/Utils/create-new-arr";
 import { useNavigate, useParams } from "react-router-dom";
-import { useEffect } from "react";
 import useComponentRemount from "../Services/Utils/component-remounter";
 
 type handleOptionFuncType = React.MouseEvent<HTMLLIElement> | boolean;
@@ -23,7 +22,7 @@ function ProductsList() {
 
     const [navValue, setNavVal] = useState<string | null>(null);
 
-    const { activity, brand, device, discount, handleFilterValue } = useFilterOptions();
+    const { activity, brands, device, discount, handleFilterValue } = useFilterOptions();
 
     const params = useParams();
 
@@ -36,18 +35,22 @@ function ProductsList() {
             handleFilterValue(type, value);
 
         } else {
-            console.log(type, e);
             handleFilterValue(type, e)
         }
     };
 
     const { data: prodData, isFetching: prodDataLoading } = useProductsDataQuery({
         activity,
-        brand,
+        brands,
         device,
         discount,
         search: navValue
     });
+
+    const navigate = useNavigate();
+
+    const navigateDevice = (device: string) => navigate(`/products/${params?.brand}/${device}`);
+    const navigateBrand = (brand: string) => navigate(`/products/${brand}/${params?.device}/`);
 
     const remount = useComponentRemount();
 
@@ -80,17 +83,19 @@ function ProductsList() {
                                         callBackFunc={ handleOption }
                                         children={ `Activity` }
                                     />
-{/*
-                                    <Option
-                                        optionList={ [{label:'All',value:'all'},...(prodData?.relatedBrands || []).map(elm => ({label: elm.brandName,value:elm.brandName}))] }
-                                        activeValue={ brand }
-                                        callBackFunc={ handleOption }
-                                        children={ `Brands` }
-                                        navigate={true}
-                                        navigatePath={`/products/${params?.brand}/`}
-                                    /> */}
 
-                                    <Option navigatePath={ `/products/${params?.brand}/` }
+                                    <div className={`block md:hidden`}>
+                                        <Option
+                                            optionList={ [{ label: 'All', value: 'all' }, ...(prodData?.relatedBrands || []).map(elm => ({ label: elm.brandName, value: elm.brandName }))] }
+                                            activeValue={ brands }
+                                            callBackFunc={ handleOption }
+                                            children={ `Brands` }
+                                            navigate={ true }
+                                            navigateFunc={ navigateBrand }
+                                        />
+                                    </div>
+
+                                    <Option navigateFunc={ navigateDevice }
                                         optionList={ filterOptionData?.device }
                                         activeValue={ device }
                                         navigate={ true }
@@ -100,7 +105,7 @@ function ProductsList() {
 
                                     <Option
                                         optionList={ filterOptionData?.device }
-
+                                        activeValue={discount}
                                         callBackFunc={ handleOption }
                                         singleOption={ true }
                                         children={ `Discount` }
@@ -118,7 +123,7 @@ function ProductsList() {
                                 :
                                 prodData?.products.length
                                     ?
-                                    prodData.products.map(item => <ProductCard callBack={()=>remount()} key={ item._id } data={ item } />)
+                                    prodData.products.map(item => <ProductCard callBack={ () => remount() } key={ item._id } data={ item } />)
                                     :
                                     <div className={ `col-span-1 md:col-span-3` }><EmptyData /></div>
                         }

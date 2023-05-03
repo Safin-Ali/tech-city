@@ -1,16 +1,14 @@
 import parseStringify from "./parse-stringify";
 import parseRealType from "./parse-real-type";
-import { useEffect, useMemo, useState } from 'react';
+import { useMemo, useState } from 'react';
 import { useParams,useLocation } from "react-router-dom";
 
 export interface FilterOptionsShapeType {
     activity: string,
-    brand: string,
+    brands: string,
     device: string,
     discount: boolean
 };
-
-type OptionIteratorType = 'activity' | 'brand' | 'device' | 'discount'
 
 type ReturnType = FilterOptionsShapeType & { handleFilterValue: (type: string, value: string | boolean) => void }
 
@@ -26,10 +24,11 @@ const useFilterOptions = (): ReturnType => {
 
     const [filterValue, setFilterValue] = useState<FilterOptionsShapeType>({
         activity: '',
-        brand: '',
+        brands: '',
         device: '',
         discount: false
     });
+
     const handleFilterValue = (type: string, value: string | boolean): void => {
         if (existOptions) {
             const optionVal = parseRealType<FilterOptionsShapeType>(existOptions);
@@ -42,7 +41,7 @@ const useFilterOptions = (): ReturnType => {
     useMemo(() => {
 
         if (!existOptions) {
-            const newVal = {...filterValue,device:device || '',brand:brand || ''}
+            const newVal = {...filterValue,device:device || '',brands:brand || ''}
             storage.setItem(`productsFilter`, parseStringify(newVal));
             setFilterValue(newVal);
         } else {
@@ -55,7 +54,7 @@ const useFilterOptions = (): ReturnType => {
                 if(opt === 'device') {
                     return updatedState[opt] = device;
                 }
-                if(opt === 'brand') {
+                if(opt === 'brands') {
                     return updatedState[opt] = brand;
                 }
                     updatedState[opt] = optionVal[opt];
