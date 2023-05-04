@@ -1,0 +1,6 @@
+.modal-bg{
+    @apply bg-[#000000d9] duration-[400ms] ease-linear backdrop-blur-[1px] w-full min-h-screen absolute inset-0
+}
+.modal-container{
+    @apply fixed z-[13] h-full lg:h-auto w-[90%] md:w-[70%] lg:w-auto my-5 md:my-0 duration-[400ms] ease-linear top-1/2 left-1/2 transform -translate-y-1/2 -translate-x-1/2
+}
