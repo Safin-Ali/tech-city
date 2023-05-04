@@ -3,6 +3,7 @@ import Home from '../Pages/Home/Home';
 import ProductsList from '../Layouts/Products-List';
 import CartProducts from '../Layouts/Cart-Products';
 import SingleProduct from '../Layouts/SingleProduct';
+import StripeWrapper from '../Components/Stripe-Payment/Stripe-Wrapper';
 function RoutesProv () {
     return (<BrowserRouter>
         <Routes>

@@ -23,12 +23,16 @@
         @apply animate-pulse bg-gray-200;
     }
 
+    /* import here all components or pages style for component */
     @import url('../Pages/Home/Shared/style/shared-section.css');
     @import url('../Components/App-Bar/navbar.css');
     @import url('../Components/Card/card-style.css');
     @import url('../Layouts/Products-List-style.css');
     @import url('../Components/Filter-Option/filter-option.css');
     @import url('../Components/Badge/badge-style.css');
+    @import url('../Components/Modal/modal-style.css');
+    @import url('../Components/Stripe-Payment/stripe-style.css');
+    @import url('../Components/Button/animate-btn.css');
 }
 
 @layer utilities {

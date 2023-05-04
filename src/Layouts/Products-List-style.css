@@ -19,3 +19,10 @@
     transition:background-color 0.2s ease-in;
     @apply bg-blue-800 text-white-50 border-none shadow-[0px_3px_12px_hsla(218,100%,62%,0.9)];
 }
+
+.field-container{
+    @apply grid my-3 sm:my-0 border-t sm:border-t-0 grid-cols-1 gap-y-3 md:gap-y-0 sm:grid-cols-3 gap-x-1 w-full
+}
+.nested-field-container{
+    @apply flex capitalize overflow-scroll hide-scrollbar my-1 even:bg-[#ebebeb] bg-[#d3d3d3] px-2 items-center
+}

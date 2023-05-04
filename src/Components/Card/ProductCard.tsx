@@ -7,6 +7,7 @@ import DiscountBadge from '../Badge/DiscountBadge';
 import PrimaryButton from '../Button/Primary-Button';
 import useCartController from '../../Services/Utils/cart-products-controller';
 import newArr from '../../Services/Utils/create-new-arr';
+import AnimateBtn from '../Button/Animate-Btn';
 
 interface Props {
     data: ProdDataShape,
@@ -22,7 +23,7 @@ const ProductCard = ({ data, callBack = () => {} }: Props) => {
     const navigate = useNavigate();
 
     // // navigate product single page
-    const navigateProduct = () => navigate(`/product/${brand}/${device}/${_id}`, { state: data });
+    const navigateProduct = () => navigate(`/product/${brand}/${device}/${_id}`, { state: window.location.href });
 
     // handle product cart
     const { handleCart, status } = useCartController(_id);
@@ -66,9 +67,9 @@ const ProductCard = ({ data, callBack = () => {} }: Props) => {
                     <span className="text-3xl font-bold text-indigo-950">${ price.total }</span>
                     <div className={ `flex-v-center gap-x-2` }>
                         <div>
-                            <PrimaryButton onClick={navigateProduct} padding={ `px-3 py-1.5` }>
+                            <AnimateBtn onClick={navigateProduct}>
                                 Buy Now
-                            </PrimaryButton>
+                            </AnimateBtn>
                         </div>
                         <div
 
